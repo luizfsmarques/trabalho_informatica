@@ -16,66 +16,50 @@ class ProdutoController extends Controller
 
     public function cadastro()
     {
-        return view('./clientes/cadastro');
+        return view('./produtos/cadastro');
     }   
 
     public function store(Request $request)
     {
-        // $Cliente = new Cliente();
-        // $Cliente->nome = $request->nome;
-        // $Cliente->cpf = $request->cpf;
-        // $Cliente->telefone = $request->telefone;
-        // $Cliente->idade = $request->idade;
-        // $Cliente->profissao = $request->profissao;
-        // $Cliente->quantFamiliares = $request->quantFamiliares;
-        // $Cliente->rua = $request->rua;
-        // $Cliente->bairro = $request->bairro;
-        // $Cliente->numero = $request->numero;
-        // $Cliente->complemento = $request->complemento;
-        // $Cliente->cidade = "Campos dos Goytacazes";
-        // $Cliente->cep = $request->cep;
+        $Produto = new Produto();
+        $Produto->nome = $request->nome;
+        $Produto->marca = $request->marca;
+        $Produto->categoria = $request->categoria;
+        $Produto->preco = floatval($request->preco);
 
-        // $Cliente->save();
+        $Produto->save();
 
-        // return redirect('/')->with('msgSucesso','Cliente cadastrado com sucesso!');
+        return redirect('/produtos')->with('msgSucesso','Produto cadastrado com sucesso!');
     }   
 
-    public function atualizar($codCli)
+    public function atualizar($codProd)
     {
-        // $cliente = Cliente::find($codCli);
-        // return view('./clientes/atualizar', ['cliente'=>$cliente]);
+        $produto = Produto::find($codProd);
+        return view('./produtos/atualizar', ['produto'=>$produto]);
     }
 
-    public function update(Request $request, $codCli)
+    public function update(Request $request, $codProd)
     {
-        // $Cliente = Cliente::find($codCli);
-        // $Cliente->nome = $request->nome;
-        // $Cliente->cpf = $request->cpf;
-        // $Cliente->telefone = $request->telefone;
-        // $Cliente->idade = $request->idade;
-        // $Cliente->profissao = $request->profissao;
-        // $Cliente->quantFamiliares = $request->quantFamiliares;
-        // $Cliente->rua = $request->rua;
-        // $Cliente->bairro = $request->bairro;
-        // $Cliente->numero = $request->numero;
-        // $Cliente->complemento = $request->complemento;
-        // $Cliente->cidade = "Campos dos Goytacazes";
-        // $Cliente->cep = $request->cep;
+        $Produto = Produto::find($codProd);
+        $Produto->nome = $request->nome;
+        $Produto->marca = $request->marca;
+        $Produto->categoria = $request->categoria;
+        $Produto->preco = floatval($request->preco);
 
-        // $Cliente->save();
+        $Produto->save();
 
-        // return redirect('/')->with('msgSucesso','Cliente atualizado com sucesso!');
+        return redirect('/produtos')->with('msgSucesso','Produto atualizado com sucesso!');
 
     }
 
-    public function excluir($codCli)
+    public function excluir($codProd)
     {
-        return view('./clientes/excluir', ['codCli'=>$codCli]);
+        return view('./produtos/excluir', ['codProd'=>$codProd]);
     }
 
-    public function destroy($codCli)
+    public function destroy($codProd)
     {
-        // Cliente::find($codCli)->delete();
-        // return redirect('/')->with('msgSucesso','Cliente excluído com sucesso!');
+        Produto::find($codProd)->delete();
+        return redirect('/produtos')->with('msgSucesso','Produto excluído com sucesso!');
     }
 }

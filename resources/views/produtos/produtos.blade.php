@@ -66,7 +66,7 @@
                         <div class="container">
                             <p>Marca: {{$produto->marca}}</p>
                             <p>Categoria: {{$produto->categoria}}</p>
-                            <p>Preço: {{$produto->preço}}</p>
+                            <p>Preço: R${{str_replace(".",",", strval($produto->preco) )}}</p>
                         </div>
 
                     </div>
