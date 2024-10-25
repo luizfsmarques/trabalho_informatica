@@ -41,5 +41,5 @@ Route::delete('/delete/produto/{codProd}', [ProdutoController::class,'destroy'])
 
 // Pedidos
 
-
+// PAREI AQUI! - CRUD DOS PEDIDIDOS!
 
