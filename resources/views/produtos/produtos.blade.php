@@ -18,18 +18,18 @@
 </div>
 
 <div class="container-fluid">
-    <a href="/cadastro/cliente" type="button" class="btn btn-primary">Cadastrar cliente</a>
+    <a href="/cadastro/produto" type="button" class="btn btn-primary">Cadastrar produto</a>
 </div>
 
 <div class="container-fluid">
-    <h1>Lista dos clientes</h1>
+    <h1>Lista dos produtos</h1>
 </div>
 
 <div class="container-fluid">
                       
     <div class="accordion" id="accordionExample">
 
-        @foreach($clientes as $cliente)
+        @foreach($produtos as $produto)
         
             <div class="accordion-item">
                 <h2 class="accordion-header">
@@ -43,11 +43,8 @@
                         <div class="col-2 img-usuario">
                             <img class="img-perfil" src="{{asset('../img/img-perfil.png')}}" alt="Foto do usuário"> 
                         </div>
-                        <div class="col-5 nome-usuario">
-                            <p class="">{{strtoupper($cliente->name)}}</p>
-                        </div>
-                        <div class="col-5 telefone-usuario">
-                            <p class="">{{$cliente->telefone}}</p>
+                        <div class="col-10 telefone-usuario">
+                            <p class="">{{$produto->nome}}</p>
                         </div>
                     </div>
 
@@ -62,21 +59,14 @@
                     <div class="accordion-body">
 
                         <div class="container">
-                            <a href="/cadastrar/pedido/{{$cliente->codCli}}" type="button" class="btn btn-primary">Fazer pedido</a>
-                            <a href="/atualizar/cliente/{{$cliente->codCli}}" type="button" class="btn btn-primary">Atualizar</a>
-                            <a href="/excluir/cliente/{{$cliente->codCli}}" type="button" class="btn btn-danger">Excluir</a>
+                            <a href="/atualizar/produto/{{$produto->codProd}}" type="button" class="btn btn-primary">Atualizar</a>
+                            <a href="/excluir/produto/{{$produto->codProd}}" type="button" class="btn btn-danger">Excluir</a>
                         </div>
 
                         <div class="container">
-                            <p>CPF: {{$cliente->cpf}}</p>
-                            <p>Idade: {{$cliente->idade}}</p>
-                            <p>Profissão: {{$cliente->profissao}}</p>
-                            <p>Quantidade de familiares: {{$cliente->quantFamiliares}}</p>
-                            <p>CEP: {{$cliente->cep}}</p>
-                            <p>Rua: {{$cliente->rua}}</p>
-                            <p>Bairro: {{$cliente->bairro}}</p>
-                            <p>Cidade: {{$cliente->cidade}}</p>
-                            <p>Complemento: {{$cliente->complemento}}</p>
+                            <p>Marca: {{$produto->marca}}</p>
+                            <p>Categoria: {{$produto->categoria}}</p>
+                            <p>Preço: {{$produto->preço}}</p>
                         </div>
 
                     </div>
