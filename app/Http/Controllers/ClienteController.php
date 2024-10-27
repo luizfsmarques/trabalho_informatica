@@ -143,5 +143,7 @@ class ClienteController extends Controller
             ]);
         }
 
+        return redirect('/')->with('msgSucesso','Clientes gerados com sucesso!');
+
     }
 }
