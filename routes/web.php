@@ -23,7 +23,7 @@ Route::get('/excluir/cliente/{codCli}', [ClienteController::class,'excluir']);
 
 Route::delete('/delete/cliente/{codCli}', [ClienteController::class,'destroy']);
 
-Route::get('/gerar/dados', [ClienteController::class,'gerar_dados']);
+Route::get('/gerar/clientes', [ClienteController::class,'gerar_clientes']);
 
 
 // Produtos
@@ -42,6 +42,7 @@ Route::get('/excluir/produto/{codProd}', [ProdutoController::class,'excluir']);
 
 Route::delete('/delete/produto/{codProd}', [ProdutoController::class,'destroy']);
 
+Route::get('/gerar/produtos', [ProdutoController::class,'gerar_produtos']);
 
 // Pedidos
 
@@ -56,8 +57,3 @@ Route::get('/remover/produto/carrinho/{codCli}/{codProd}', [PedidoController::cl
 Route::get('/finalizar/carrinho/{codCli}', [PedidoController::class,'finalizar_pedido']);
 
 Route::get('/gerar/pedidos', [PedidoController::class,'gerar_pedidos']);
-
-
-
-
-

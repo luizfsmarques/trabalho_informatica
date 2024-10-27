@@ -23,10 +23,16 @@
 
 <div class="container-fluid">
     <h1>Lista dos clientes</h1>
+    <p>Quantidade: {{count($clientes)}}</p>
 </div>
 
 <div class="container-fluid">
                       
+@if( count($clientes) == 0 )
+
+    <p>Não existem registros no momento.</p>
+
+@else
     <div class="accordion" id="accordionExample">
 
         @foreach($clientes as $cliente)
@@ -86,6 +92,9 @@
         @endforeach                        
     
     </div>
+
+@endif
+
 </div>
 
 

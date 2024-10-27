@@ -4,9 +4,16 @@
 
 <div class="container-fluid">
     <h1>Lista dos itens pedidos</h1>
+    <p>Quantidade: {{count($pedidos)}}</p>
 </div>
 
 <div class="container-fluid">
+
+@if( count($pedidos) == 0 )
+
+    <p>Não existem registros no momento.</p>
+
+@else
 
     <ul class="list-group">
 
@@ -30,7 +37,7 @@
         @endforeach
     </ul>
 
-
+@endif
 
 </div>
 

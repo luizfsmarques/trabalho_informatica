@@ -133,7 +133,39 @@ class PedidoController extends Controller
         return redirect('/')->with('msgSucesso','Pedido cadastrado com sucesso!');
 
     }
- 
 
+
+    public function gerar_pedidos()
+    {
+        $ClienteController = new ClienteController();
+        $clientes = $ClienteController->retorna_clientes();
+
+        $ProdutoController = new ProdutoController();
+        $produtos = $ProdutoController->retorna_produtos();
+
+        foreach($clientes as $cliente)
+        {
+            foreach( $produtos as $produto )
+            {
+                date_default_timezone_set('America/Sao_Paulo');
+
+                $time = rand(8,17).':'.rand(1,59).':'.rand(1,59);
+                $hora = date($time);
+                $date = '2024-'.rand(1,10).'-'.rand(1,27);
+                $quantidade = rand(1,12);
+
+                DB::table('cliente_produto')->insert([
+                    'codCli' => $cliente->codCli,
+                    'codProd' => $produto->codProd,
+                    'data'=>$date,
+                    'hora'=>$hora,
+                    'quantidade'=>$quantidade
+                ]);
+            }
+        }
+
+        return redirect('/')->with('msgSucesso','Pedidos gerados com sucesso!');
+
+    }
 
 }

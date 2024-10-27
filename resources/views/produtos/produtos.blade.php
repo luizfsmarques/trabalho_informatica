@@ -23,10 +23,17 @@
 
 <div class="container-fluid">
     <h1>Lista dos produtos</h1>
+    <p>Quantidade: {{count($produtos)}}</p>
 </div>
 
 <div class="container-fluid">
-                      
+                     
+@if( count($produtos) == 0 )
+
+    <p>Não existem registros no momento.</p>
+
+@else
+
     <div class="accordion" id="accordionExample">
 
         @foreach($produtos as $produto)
@@ -76,6 +83,9 @@
         @endforeach                        
     
     </div>
+
+@endif
+
 </div>
 
 

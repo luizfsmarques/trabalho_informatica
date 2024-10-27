@@ -5,6 +5,9 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 
+use App\Http\Controllers\ProdutoController;
+use App\Http\Controllers\PedidoController;
+
 use App\Models\Cliente;
 
 class ClienteController extends Controller
@@ -89,6 +92,20 @@ class ClienteController extends Controller
         return redirect('/')->with('msgSucesso','Cliente excluído com sucesso!');
     }
 
+    public function gerar_dados()
+    {
+        $this->gerar_clientes();
+
+        $ProdutoController = new ProdutoController();
+        $ProdutoController->gerar_produtos();
+
+        $PedidoController = new PedidoController();
+        $PedidoController->gerar_pedidos();
+
+        return redirect('/')->with('msgSucesso','Clientes gerados com sucesso!');
+
+    }
+
     public function gerar_clientes()
     {
         $nomes = [
@@ -125,8 +142,6 @@ class ClienteController extends Controller
                 'complemento' => $complemento,'cidade'=>$cidade,'cep'=>$cep,
             ]);
         }
-
-        return redirect('/')->with('msgSucesso','Clientes gerados com sucesso!');
 
     }
 }
