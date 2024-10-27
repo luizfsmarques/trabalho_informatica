@@ -3,6 +3,8 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
+
 use App\Models\Cliente;
 
 class ClienteController extends Controller
@@ -19,6 +21,7 @@ class ClienteController extends Controller
 
         $clientes = Cliente::all();
         return view('./clientes/clientes',['clientes'=>$clientes]);
+
     }
 
     public function cadastro()
@@ -86,8 +89,7 @@ class ClienteController extends Controller
         return redirect('/')->with('msgSucesso','Cliente excluído com sucesso!');
     }
 
-
-    public function gera_clientes()
+    public function gerar_clientes()
     {
         $nomes = [
             'Paulo Cesar','Thaís Moreira','Bernado','Luiz Fernando','Jade Rebeca','João Machado','Marcia Gusmão','Marcos Gomes', 'Julia Gomes','Mariana Barbosa',
@@ -102,17 +104,29 @@ class ClienteController extends Controller
             'Paul Jorge','Thaís Moraes','Beatriz Alves','Luiz Serra','Jade Rebeca','Barbara Machado','Marilene Gusmão','Marcos Costa', 'Juliano Gomes','Maria das Graças',
         ];
 
-        foreach($nomes as $nome)
+        foreach($nomes as $i=>$nome)
         {
-            DB::table('cliente_produto')->insert([
-                'codCli' => $codCli,
-                'codProd' => $prod['codProd'],
-                'data'=>session()->get('carrinho.date'),
-                'hora'=>session()->get('carrinho.time'),
-                'quantidade'=>$prod['quantidade']
-            ]);
-            
-        }
-    }
+            $cpf = rand(0,9).''.rand(0,9).''.rand(0,9).'.'.rand(0,9).''.rand(0,9).''.rand(0,9).'.'.rand(0,9).''.rand(0,9).''.rand(0,9).'-'.rand(0,9).''.rand(0,9);
+            $telefone = '(22)99876-5432';
+            $idade = rand(18,60);
+            $profissao = "Profissão ".$i;
+            $quantFamiliares = rand(1,10);
+            $rua = "Rua ".$i;
+            $bairro = "Bairro ".rand(1,12);
+            $numero = $i;
+            $complemento = "Complemento ".$i;
+            $cidade = "Campos dos Goytacazes";
+            $cep = "11.111-111";
 
+            DB::table('clientes')->insert([
+                'nome' => $nome,'cpf'=>$cpf,'telefone'=>$telefone,
+                'idade' => $idade,'profissao'=>$profissao,'quantFamiliares'=>$quantFamiliares,
+                'rua' => $rua,'bairro'=>$bairro,'numero'=>$numero,
+                'complemento' => $complemento,'cidade'=>$cidade,'cep'=>$cep,
+            ]);
+        }
+
+        return redirect('/')->with('msgSucesso','Clientes gerados com sucesso!');
+
+    }
 }

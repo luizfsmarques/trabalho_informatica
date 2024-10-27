@@ -54,6 +54,15 @@
                     <li class="nav-item">
                         <a class="nav-link" href="/pedidos">Pedidos</a>
                     </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="/gerar/clientes">Gerar clientes</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="/gerar/produtos">Gerar produtos</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="/gerar/pedidos">Gerar pedidos</a>
+                    </li>
                 </ul>
                 <form class="d-flex" role="search">
                     <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
