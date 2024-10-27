@@ -8,6 +8,16 @@ use App\Models\Produto;
 
 class ProdutoController extends Controller
 {
+    public function retorna_produtos()
+    {   
+        return Produto::all();
+    }
+
+    public function retorna_produto($codProd)
+    {   
+        return Produto::find($codProd);
+    }
+    
     public function index()
     {   
         $produtos = Produto::all();

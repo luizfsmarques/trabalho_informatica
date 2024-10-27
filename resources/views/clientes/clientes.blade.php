@@ -62,7 +62,7 @@
                     <div class="accordion-body">
 
                         <div class="container">
-                            <a href="/cadastrar/pedido/{{$cliente->codCli}}" type="button" class="btn btn-primary">Fazer pedido</a>
+                            <a href="/carrinho/{{$cliente->codCli}}" type="button" class="btn btn-primary">Fazer pedido</a>
                             <a href="/atualizar/cliente/{{$cliente->codCli}}" type="button" class="btn btn-primary">Atualizar</a>
                             <a href="/excluir/cliente/{{$cliente->codCli}}" type="button" class="btn btn-danger">Excluir</a>
                         </div>

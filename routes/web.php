@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Route;
 
 use App\Http\Controllers\ClienteController;
 use App\Http\Controllers\ProdutoController;
-// use App\Http\Controllers\PedidoController;
+use App\Http\Controllers\PedidoController;
 
 
 // Clientes
@@ -41,5 +41,18 @@ Route::delete('/delete/produto/{codProd}', [ProdutoController::class,'destroy'])
 
 // Pedidos
 
-// PAREI AQUI! - CRUD DOS PEDIDIDOS!
+Route::get('/pedidos', [PedidoController::class,'index']);
+
+Route::get('/carrinho/{codCli}', [PedidoController::class,'carrinho']);
+
+Route::post('/adicionar/produto/carrinho/{codCli}', [PedidoController::class,'adicionar_produto']);
+
+Route::get('/remover/produto/carrinho/{codCli}/{codProd}', [PedidoController::class,'remover_produto']);
+
+Route::get('/finalizar/carrinho/{codCli}', [PedidoController::class,'finalizar_pedido']);
+
+
+
+
+
 
