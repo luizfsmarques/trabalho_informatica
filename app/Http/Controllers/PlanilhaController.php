@@ -11,6 +11,9 @@ use App\Http\Controllers\PedidoController;
 use PhpOffice\PhpSpreadsheet\Spreadsheet;
 use PhpOffice\PhpSpreadsheet\Writer\Xlsx;
 
+use PhpOffice\PhpSpreadsheet\Shared\Date as SharedDate;
+use DateTime;
+
 class PlanilhaController extends Controller
 {
     
@@ -24,6 +27,16 @@ class PlanilhaController extends Controller
         // Criando uma nova planilha
         $spreadsheet = new Spreadsheet();
         $spreadsheet->getActiveSheet()->setTitle('Clientes');
+
+        $spreadsheet->getProperties()
+        ->setCreator("Trabalho informática")
+        ->setLastModifiedBy("Trabalho informática")
+        ->setTitle("Office 2007 XLSX Test Document")
+        ->setSubject("Office 2007 XLSX Test Document")
+        ->setDescription("Test document for Office 2007 XLSX, generated using PHP classes.")
+        ->setKeywords("office 2007 openxml php")
+        ->setCategory("Test result file");
+
         $sheet = $spreadsheet->getActiveSheet();
 
         // Definindo o cabeçalho da planilha
@@ -111,6 +124,8 @@ class PlanilhaController extends Controller
         // Preenchendo a planilha com os dados
         $rowCount = 2;
         foreach( $pedidos as $pedido ) {
+            // $date = SharedDate::PHPToExcel(new DateTime($pedido->data));
+            // $time = SharedDate::PHPToExcel(new DateTime($pedido->hora));
             $sheet->setCellValue('A' . $rowCount, $pedido->codCli);
             $sheet->setCellValue('B' . $rowCount, $pedido->codProd);
             $sheet->setCellValue('C' . $rowCount, $pedido->data);
@@ -125,72 +140,91 @@ class PlanilhaController extends Controller
         // Definindo cabeçalhos para o download
         header('Content-Type: application/vnd.openxmlformats-officedocument.spreadsheetml.sheet');
         header('Content-Disposition: attachment;filename="planilha-informatica-iff.xlsx"');
+        // header('Content-Disposition: attachment;filename="planilha-informatica-iff.xls"');
         header('Cache-Control: max-age=0');
 
         // Escrevendo o arquivo diretamente para o PHP output
-        $writer = new Xlsx($spreadsheet);
+        // $writer = new Xlsx($spreadsheet);
+        // $writer = \PhpOffice\PhpSpreadsheet\IOFactory::createWriter($spreadsheet, "Xlsx");
+        $writer = new \PhpOffice\PhpSpreadsheet\Writer\Xlsx($spreadsheet);
+        // $writer = new \PhpOffice\PhpSpreadsheet\Writer\Xls($spreadsheet);
+
         $writer->save('php://output');
 
         return redirect('/')->with('msgSucesso','Planilha gerada com sucesso!');
         
     }
 
-    public function gerar_clientes()
-    {
 
-        $ClientesController = new ClienteController();
-        $clientes = $ClientesController->retorna_clientes();
 
-        // Criando uma nova planilha
-        $spreadsheet = new Spreadsheet();
-        $sheet = $spreadsheet->getActiveSheet();
 
-        // Definindo o cabeçalho da planilha
-        $sheet->setCellValue('A1', 'codCli');
-        $sheet->setCellValue('B1', 'nome');
-        $sheet->setCellValue('C1', 'cpf');
-        $sheet->setCellValue('D1', 'telefone');
-        $sheet->setCellValue('E1', 'idade');
-        $sheet->setCellValue('F1', 'profissao');
-        $sheet->setCellValue('G1', 'quantFamiliares');
-        $sheet->setCellValue('H1', 'bairro');
-        $sheet->setCellValue('I1', 'rua');
-        $sheet->setCellValue('J1', 'numero');
-        $sheet->setCellValue('K1', 'complemento');
-        $sheet->setCellValue('L1', 'cidade');
-        $sheet->setCellValue('M1', 'cep');
 
-        // Preenchendo a planilha com os dados
-        $rowCount = 2;
-        foreach( $clientes as $cliente ) {
-            $sheet->setCellValue('A' . $rowCount, $cliente->codCli);
-            $sheet->setCellValue('B' . $rowCount, $cliente->nome);
-            $sheet->setCellValue('C' . $rowCount, $cliente->cpf);
-            $sheet->setCellValue('D' . $rowCount, $cliente->telefone);
-            $sheet->setCellValue('E' . $rowCount, $cliente->idade);
-            $sheet->setCellValue('F' . $rowCount, $cliente->profissao);
-            $sheet->setCellValue('G' . $rowCount, $cliente->quantFamiliares);
-            $sheet->setCellValue('H' . $rowCount, $cliente->bairro);
-            $sheet->setCellValue('I' . $rowCount, $cliente->rua);
-            $sheet->setCellValue('J' . $rowCount, $cliente->numero);
-            $sheet->setCellValue('K' . $rowCount, $cliente->complemento);
-            $sheet->setCellValue('L' . $rowCount, $cliente->cidade);
-            $sheet->setCellValue('M' . $rowCount, $cliente->cep);
 
-            $rowCount++;
-        }
 
-        // Definindo cabeçalhos para o download
-        header('Content-Type: application/vnd.openxmlformats-officedocument.spreadsheetml.sheet');
-        header('Content-Disposition: attachment;filename="clientes.xlsx"');
-        header('Cache-Control: max-age=0');
 
-        // Escrevendo o arquivo diretamente para o PHP output
-        $writer = new Xlsx($spreadsheet);
-        $writer->save('php://output');
 
-        return redirect('/')->with('msgSucesso','Planilha gerada com sucesso!');
+
+
+
+
+
+
+    // public function gerar_clientes()
+    // {
+
+    //     $ClientesController = new ClienteController();
+    //     $clientes = $ClientesController->retorna_clientes();
+
+    //     // Criando uma nova planilha
+    //     $spreadsheet = new Spreadsheet();
+    //     $sheet = $spreadsheet->getActiveSheet();
+
+    //     // Definindo o cabeçalho da planilha
+    //     $sheet->setCellValue('A1', 'codCli');
+    //     $sheet->setCellValue('B1', 'nome');
+    //     $sheet->setCellValue('C1', 'cpf');
+    //     $sheet->setCellValue('D1', 'telefone');
+    //     $sheet->setCellValue('E1', 'idade');
+    //     $sheet->setCellValue('F1', 'profissao');
+    //     $sheet->setCellValue('G1', 'quantFamiliares');
+    //     $sheet->setCellValue('H1', 'bairro');
+    //     $sheet->setCellValue('I1', 'rua');
+    //     $sheet->setCellValue('J1', 'numero');
+    //     $sheet->setCellValue('K1', 'complemento');
+    //     $sheet->setCellValue('L1', 'cidade');
+    //     $sheet->setCellValue('M1', 'cep');
+
+    //     // Preenchendo a planilha com os dados
+    //     $rowCount = 2;
+    //     foreach( $clientes as $cliente ) {
+    //         $sheet->setCellValue('A' . $rowCount, $cliente->codCli);
+    //         $sheet->setCellValue('B' . $rowCount, $cliente->nome);
+    //         $sheet->setCellValue('C' . $rowCount, $cliente->cpf);
+    //         $sheet->setCellValue('D' . $rowCount, $cliente->telefone);
+    //         $sheet->setCellValue('E' . $rowCount, $cliente->idade);
+    //         $sheet->setCellValue('F' . $rowCount, $cliente->profissao);
+    //         $sheet->setCellValue('G' . $rowCount, $cliente->quantFamiliares);
+    //         $sheet->setCellValue('H' . $rowCount, $cliente->bairro);
+    //         $sheet->setCellValue('I' . $rowCount, $cliente->rua);
+    //         $sheet->setCellValue('J' . $rowCount, $cliente->numero);
+    //         $sheet->setCellValue('K' . $rowCount, $cliente->complemento);
+    //         $sheet->setCellValue('L' . $rowCount, $cliente->cidade);
+    //         $sheet->setCellValue('M' . $rowCount, $cliente->cep);
+
+    //         $rowCount++;
+    //     }
+
+    //     // Definindo cabeçalhos para o download
+    //     header('Content-Type: application/vnd.openxmlformats-officedocument.spreadsheetml.sheet');
+    //     header('Content-Disposition: attachment;filename="clientes.xlsx"');
+    //     header('Cache-Control: max-age=0');
+
+    //     // Escrevendo o arquivo diretamente para o PHP output
+    //     $writer = new Xlsx($spreadsheet);
+    //     $writer->save('php://output');
+
+    //     return redirect('/')->with('msgSucesso','Planilha gerada com sucesso!');
         
-    }
+    // }
 
 }
