@@ -54,14 +54,16 @@
                     <li class="nav-item">
                         <a class="nav-link" href="/pedidos">Pedidos</a>
                     </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="/gerar/clientes">Gerar clientes</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="/gerar/produtos">Gerar produtos</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="/gerar/pedidos">Gerar pedidos</a>
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                            Gerar dados
+                        </a>
+                        <ul class="dropdown-menu">
+                            <li><a class="dropdown-item" href="/gerar/clientes">Gerar clientes</a></li>
+                            <li><a class="dropdown-item" href="/gerar/produtos">Gerar produtos</a></li>
+                            <li><hr class="dropdown-divider"></li>
+                            <li><a class="dropdown-item" href="/gerar/pedidos">Gerar pedidos</a></li>
+                        </ul>
                     </li>
                 </ul>
                 <form class="d-flex" role="search">
