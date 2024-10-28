@@ -54,6 +54,9 @@
                     <li class="nav-item">
                         <a class="nav-link" href="/pedidos">Pedidos</a>
                     </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="/gerar/planilha/">Gerar planilha</a>
+                    </li>
                     <li class="nav-item dropdown">
                         <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
                             Gerar dados

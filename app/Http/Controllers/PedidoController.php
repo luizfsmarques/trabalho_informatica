@@ -11,6 +11,11 @@ use App\Http\Controllers\ClienteController;
 class PedidoController extends Controller
 {
 
+    public function retorna_pedidos()
+    {
+        return DB::table('cliente_produto')->get();
+    }
+
     public function index()
     {
         $ProdutoController = new ProdutoController();

@@ -5,7 +5,12 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\ClienteController;
 use App\Http\Controllers\ProdutoController;
 use App\Http\Controllers\PedidoController;
+use App\Http\Controllers\PlanilhaController;
 
+
+// Planilha
+
+Route::get('/gerar/planilha', [PlanilhaController::class,'gerar']);
 
 // Clientes
 
