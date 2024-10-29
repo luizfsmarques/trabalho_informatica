@@ -19,7 +19,6 @@ class PlanilhaController extends Controller
     
     public function gerar()
     {
-
         //PARA OS CLIENTES
         $ClienteController = new ClienteController();
         $clientes = $ClienteController->retorna_clientes();
@@ -131,7 +130,7 @@ class PlanilhaController extends Controller
             $sheet->setCellValue('A' . $rowCount, $pedido->codCli);
             $sheet->setCellValue('B' . $rowCount, $pedido->codProd);
             $sheet->setCellValue('C' . $rowCount, date('d/m/Y',strtotime($pedido->data)));
-            $sheet->setCellValue('D' . $rowCount, $pedido->hora);
+            $sheet->setCellValue('D' . $rowCount, date('h:i:s',strtotime($pedido->hora)));
             $sheet->setCellValue('E' . $rowCount, $pedido->quantidade);
             $sheet->setCellValue('F' . $rowCount, $pedido->preco);
 

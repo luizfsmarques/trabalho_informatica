@@ -1,8 +1,10 @@
 @extends('layouts.main')
 
+@section('style',asset('../css/carrinho.css'))
+
 @section('content')
 
-<div class="container-fluid">
+<div class="container-fluid ">
 
     @if(session('msgSucesso'))
     <div class="alert alert-success" role="alert">
@@ -12,17 +14,17 @@
     
 </div>
 
-<div class="container-fluid">
+<div class="container-fluid titulo">
     <h1>Carrinho de compras</h1>
 </div>
 
-<div class="container-fluid">
+<div class="container-fluid botao">
     <a href="/finalizar/carrinho/{{$codCli}}" class="btn btn-success">Finalizar pedido</a>
 </div>
 
-<div class="container-fluid">
+<!-- <div class="container-fluid">
     <button type="button" class="btn btn-primary">Adicionar produto</button>
-</div>
+</div> -->
 
 <div class="container-fluid" id="box-form">
     <form action="/adicionar/produto/carrinho/{{$codCli}}" method="POST">

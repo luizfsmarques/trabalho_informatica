@@ -1,0 +1,41 @@
+.botao{
+    margin-bottom: 20px;
+}
+
+.titulo{
+    margin-top: 20px;
+    margin-bottom: 30px;
+}
+
+.accordion-item{
+    margin-bottom: 50px;
+}
+
+.img-perfil{
+    width: 70px;
+    height: 70px;
+    border-radius: 70px;
+}
+
+.bi-cart4{
+    font-size: 3rem;
+    position: relative;
+    bottom: 5px;
+}
+
+.nome-usuario, .telefone-usuario{
+    display: flex;
+    align-items: center;
+}
+
+.nome-usuario p, .telefone-usuario p{
+    width: 300px;
+}
+
+.accordion-body .container a{
+    margin-right: 10px;
+}
+
+.accordion-body .container{
+    margin-bottom: 20px;
+}

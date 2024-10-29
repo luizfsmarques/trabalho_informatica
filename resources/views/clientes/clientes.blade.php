@@ -1,5 +1,7 @@
 @extends('layouts.main')
 
+@section('style',asset('../css/ver.css'))
+
 @section('content')
 
 <div class="container-fluid">
@@ -17,11 +19,11 @@
     @endif
 </div>
 
-<div class="container-fluid">
+<div class="container-fluid botao">
     <a href="/cadastro/cliente" type="button" class="btn btn-primary">Cadastrar cliente</a>
 </div>
 
-<div class="container-fluid">
+<div class="container-fluid titulo">
     <h1>Lista dos clientes</h1>
     <p>Quantidade: {{count($clientes)}}</p>
 </div>
@@ -46,13 +48,13 @@
                 @endif
                     
                     <div class="row titulo-usuario">
-                        <div class="col-2 img-usuario">
+                        <div class="col-4 img-usuario">
                             <img class="img-perfil" src="{{asset('../img/img-perfil.png')}}" alt="Foto do usuário"> 
                         </div>
-                        <div class="col-5 nome-usuario">
-                            <p class="">{{strtoupper($cliente->name)}}</p>
+                        <div class="col-4 nome-usuario">
+                            <p class="">{{strtoupper($cliente->nome)}}</p>
                         </div>
-                        <div class="col-5 telefone-usuario">
+                        <div class="col-4 telefone-usuario">
                             <p class="">{{$cliente->telefone}}</p>
                         </div>
                     </div>

@@ -1,0 +1,20 @@
+
+.titulo{
+    margin-top: 20px;
+    margin-bottom: 50px;
+}
+
+
+.botao{
+    margin-bottom: 20px;
+}
+
+form{
+    /* height: 250px; */
+    margin-bottom: 70px;
+}
+
+#box-form-btn{
+    position: relative;
+    top: 20px;
+}

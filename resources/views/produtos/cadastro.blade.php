@@ -1,5 +1,7 @@
 @extends('layouts.main')
 
+@section('style',asset('../css/cadastro.css'))
+
 @section('content')
 
 <div class="container-fluid">

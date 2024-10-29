@@ -1,8 +1,10 @@
 @extends('layouts.main')
 
+@section('style',asset('../css/clientes/cadastro.css'))
+
 @section('content')
 
-<div class="container-fluid">
+<div class="container-fluid titulo">
     <h1>Atualização de cliente</h1>
 </div>
 
@@ -60,7 +62,7 @@
             <input type="text" name="cep" value="{{$cliente->cep}}" maxlength="10" class="form-control" id="cep">
         </div>                        
 
-        <div class="col-12" id="box-form-btn">
+        <div class="col-12 btn-form" id="box-form-btn">
             <button type="submit" class="btn btn-primary">Atualizar</button>
         </div>
     </form>

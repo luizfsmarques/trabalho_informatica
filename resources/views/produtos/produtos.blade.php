@@ -1,5 +1,7 @@
 @extends('layouts.main')
 
+@section('style',asset('../css/ver.css'))
+
 @section('content')
 
 <div class="container-fluid">
@@ -47,10 +49,10 @@
                 @endif
                     
                     <div class="row titulo-usuario">
-                        <div class="col-2 img-usuario">
-                            <img class="img-perfil" src="{{asset('../img/img-perfil.png')}}" alt="Foto do usuário"> 
+                        <div class="col-4 img-usuario">
+                            <i class="bi bi-cart4 img-perfil"></i>
                         </div>
-                        <div class="col-10 telefone-usuario">
+                        <div class="col-8 telefone-usuario">
                             <p class="">{{$produto->nome}}</p>
                         </div>
                     </div>

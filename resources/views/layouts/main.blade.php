@@ -34,12 +34,22 @@
         <link rel="stylesheet" href="{{asset('icons/bootstrap-icons.min.css')}}" type="text/css">
         <link href="{{asset('css/bootstrap/bootstrap.min.css')}}" rel="stylesheet" type="text/css"> 
 
-    </head>
-    <body class="overflow-x-hidden">
+        <link href="@yield('style')" rel="stylesheet" type="text/css">
 
-    <nav class="navbar navbar-expand-lg bg-body-tertiary">
+    </head>
+  
+    <body class="overflow-x-hidden" id="el-corpo">
+
+    <style>
+        .navbar{
+            height: 75px;    
+            margin-bottom: 20px;
+        }
+    </style>
+
+    <nav class="navbar bg-dark navbar-expand-lg bg-body-tertiary" data-bs-theme="dark">
         <div class="container-fluid">
-            <a class="navbar-brand" href="/">Navbar</a>
+            <a class="navbar-brand" href="/">InfoMarket</a>
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
             </button>

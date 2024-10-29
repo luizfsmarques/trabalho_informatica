@@ -1,8 +1,10 @@
 @extends('layouts.main')
 
+@section('style',asset('../css/cadastro.css'))
+
 @section('content')
 
-<div class="container-fluid">
+<div class="container-fluid titulo">
     <h1>Cadastro de cliente</h1>
 </div>
 
@@ -60,7 +62,7 @@
             <input type="text" name="cep" value="" maxlength="10" class="form-control" id="cep" required>
         </div>                        
 
-        <div class="col-12" id="box-form-btn">
+        <div class="col-12 btn-form" id="box-form-btn">
             <button type="submit" class="btn btn-primary">Cadastrar</button>
         </div>
     </form>
