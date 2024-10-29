@@ -17,6 +17,7 @@ return new class extends Migration
             $table->date('data');
             $table->time('hora');
             $table->integer('quantidade');
+            $table->double('preco');
             $table->timestamps();
         });
     }

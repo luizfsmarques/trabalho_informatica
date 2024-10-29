@@ -40,6 +40,7 @@ class PedidoController extends Controller
                     'produto'=>$produto->nome,
                     'marca'=>$produto->marca,
                     'quantidade'=>$pedido_cliente->quantidade,
+                    'preco'=>$pedido_cliente->preco,
                     'data'=>$pedido_cliente->data,
                     'hora'=>$pedido_cliente->hora,
                 ];
@@ -87,7 +88,7 @@ class PedidoController extends Controller
 
         $dados_pedido = [
             'codProd'=>$produto->codProd,'nome'=>$produto->nome,'marca'=>$produto->marca,
-            'preco'=>$produto->preco,'quantidade'=>$pedido['quantidade'],
+            'preco'=>$produto->preco,'quantidade'=>$pedido['quantidade'],'preco'=>$produto->preco,
             'subTotal'=>number_format($subTotal,2,',','.')
         ];
 
@@ -131,7 +132,8 @@ class PedidoController extends Controller
                 'codProd' => $prod['codProd'],
                 'data'=>session()->get('carrinho.date'),
                 'hora'=>session()->get('carrinho.time'),
-                'quantidade'=>$prod['quantidade']
+                'quantidade'=>$prod['quantidade'],
+                'preco'=>$prod['preco'],
             ]);
        }
 
@@ -158,13 +160,15 @@ class PedidoController extends Controller
                 $hora = date($time);
                 $date = '2024-'.rand(1,10).'-'.rand(1,27);
                 $quantidade = rand(1,12);
+                $preco = $produto->preco;
 
                 DB::table('cliente_produto')->insert([
                     'codCli' => $cliente->codCli,
                     'codProd' => $produto->codProd,
                     'data'=>$date,
                     'hora'=>$hora,
-                    'quantidade'=>$quantidade
+                    'quantidade'=>$quantidade,
+                    'preco'=>$preco
                 ]);
             }
         }

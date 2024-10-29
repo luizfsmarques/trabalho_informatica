@@ -120,6 +120,8 @@ class PlanilhaController extends Controller
         $sheet->setCellValue('C1', 'data');
         $sheet->setCellValue('D1', 'hora');
         $sheet->setCellValue('E1', 'quantidade');
+        $sheet->setCellValue('F1', 'preco');
+
 
         // Preenchendo a planilha com os dados
         $rowCount = 2;
@@ -128,9 +130,10 @@ class PlanilhaController extends Controller
             // $time = SharedDate::PHPToExcel(new DateTime($pedido->hora));
             $sheet->setCellValue('A' . $rowCount, $pedido->codCli);
             $sheet->setCellValue('B' . $rowCount, $pedido->codProd);
-            $sheet->setCellValue('C' . $rowCount, $pedido->data);
+            $sheet->setCellValue('C' . $rowCount, date('d/m/Y',strtotime($pedido->data)));
             $sheet->setCellValue('D' . $rowCount, $pedido->hora);
             $sheet->setCellValue('E' . $rowCount, $pedido->quantidade);
+            $sheet->setCellValue('F' . $rowCount, $pedido->preco);
 
             $rowCount++;
         }
