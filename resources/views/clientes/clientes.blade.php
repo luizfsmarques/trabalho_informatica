@@ -95,6 +95,8 @@
     
     </div>
 
+    {{$clientes->links()}}
+
 @endif
 
 </div>

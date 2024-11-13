@@ -22,7 +22,9 @@ class ClienteController extends Controller
     {   
         session()->put('carrinho', ['time'=>null,'date'=>null,'produtos'=>[]]);
 
-        $clientes = Cliente::all();
+        // $clientes = Cliente::all();
+        $clientes = Cliente::paginate(10);
+
         return view('./clientes/clientes',['clientes'=>$clientes]);
 
     }
